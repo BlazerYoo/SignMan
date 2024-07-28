@@ -1,0 +1,58 @@
+@font-face {
+      font-family: 'MyFont';
+      src: url('files/PixelAzureBonds-327Z.ttf')  format('truetype');
+}
+html {
+  height: 100%;
+  width: 100%;
+  font-family: 'MyFont';
+  scroll-behavior: smooth;
+}
+.homepage {
+  background-image: url('files/9205433.gif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+.gamepage {
+  background-image: url('files/Eqb07uBXAAAyH5X copy.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% 100%;
+
+}
+h1 {
+  position: absolute;
+  text-align: center;
+  color: mintcream;
+  font-size: 90pt;
+  margin-top: 14%;
+  z-index: 1;
+  transform: translate(45%, -55%);
+}
+h2 {
+  position: absolute;
+  text-align: center;
+  color: mintcream;
+  font-size: 100pt;
+  margin-top: 27%;
+  z-index: 1;
+  transform: translate(75%, -50%);
+}
+button {
+  position: absolute;
+  object-position: center;
+  margin-top: 37%;
+  margin-left: 800px;
+  z-index: 1;
+  background-color: transparent;
+  border: transparent;
+}
+vine1 {
+  transform: rotate(180deg);
+}
+video {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
