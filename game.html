@@ -10,13 +10,63 @@
 
 <body class="gamepage">
   <button type="button" class="game_b" onclick="window.location.href='index.html'">
-    <img src="files/407E0653-9B8B-4FE6-98B9-944124A8A734_4_5005_c-removebg-preview copy.png" width="170" height="100" />
+    <img src="files/407E0653-9B8B-4FE6-98B9-944124A8A734_4_5005_c-removebg-preview copy.png" width="110" height="60" />
   </button>
+  <img class="log" src="files/Untitled_design-removebg-preview.png" width="400" height="300" />
+  <img class="sign" src="files/4E7BCA42-5CC7-4A7B-92BB-1133AF14E4AB_1_201_a-removebg-preview.png" width="700"
+    height="400" />
+  <button type="button" class="add_b" onclick="">
+    <img src="files/Untitled_design__1_-removebg-preview.png" width="400" height="300" />
+  </button>
+  <button type="button" class="delete_b" onclick="">
+    <img src="files/Untitled_design__3_-removebg-preview.png" width="300" height="300" />
+  </button>
+
+  <div class="game-container">
+    <svg height="500" width="640" class="figure-container">
+      <line x1="60" y1="8" x2="270" y2="8"></line>
+      <line x1="270" y1="10" x2="270" y2="99"></line>
+      <line x1="60" y1="8" x2="60" y2="420"></line>
+      <line x1="10" y1="420" x2="120" y2="420"></line>
+
+      <circle cx="270" cy="140" r="40" class="figure-part"></circle>
+
+      <line x1="270" y1="180" x2="270" y2="300" class="figure-part"></line>
+
+      <line x1="270" y1="240" x2="220" y2="200" class="figure-part"></line>
+      <line x1="270" y1="240" x2="320" y2="200" class="figure-part"></line>
+
+      <line x1="270" y1="300" x2="220" y2="360" class="figure-part"></line>
+      <line x1="270" y1="300" x2="320" y2="360" class="figure-part"></line>
+    </svg>
+
+    <div class="wrong-letters-container">
+      <div id="wrong-letters"></div>
+    </div>
+    <div class="word" id="word">
+      <span class="letter"></span>
+      <span class="letter"></span>
+      <span class="letter"></span>
+      <span class="letter"></span>
+      <span class="letter"></span>
+      <span class="letter"></span>
+    </div>
+  </div>
+  <div class="popup-container" id="popup-container">
+    <div class="popup">
+      <h2 id="final-message"></h2>
+      <button id="play-button">Play Again</button>
+    </div>
+  </div>
+  <div class="notification-container" id="notification-container">
+    <p>You have already entered this letter</p>
+  </div>
+
   <script src="script.js"></script>
   <!-- index.html -->
   <video autoplay></video>
   <script>
-    var constraints = { video: true };
+    var constraints = {video: true};
     var video = document.querySelector('video');
     navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
       video.srcObject = stream;
