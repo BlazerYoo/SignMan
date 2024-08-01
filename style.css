@@ -63,14 +63,8 @@ button {
 }
 
 .add_b {
-  margin-left: 950px;
-  margin-top: 600px;
-  z-index: 0;
-}
-
-.delete_b {
-  margin-left: 1350px;
-  margin-top: 600px;
+  margin-left: 1200px;
+  margin-top: 570px;
   z-index: 0;
 }
 
@@ -103,6 +97,17 @@ video {
   margin-bottom: 20px;
   margin-left: 1000px;
   z-index: -1;
+}
+
+.letter-container {
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+  font-size: 150px;
+  color: yellow;
 }
 
 .log {

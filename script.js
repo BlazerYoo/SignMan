@@ -10,6 +10,7 @@ const playAgainBtn = document.getElementById('play-button');
 const popup = document.getElementById('popup-container');
 const notification = document.getElementById('notification-container');
 const finalMessage = document.getElementById('final-message');
+const guessButton = document.getElementById('guess');
 
 const figureParts = document.querySelectorAll(".figure-part");
 
@@ -41,33 +42,7 @@ function displayWord() {
         popup.style.display = 'flex';
     }
 }
-function addLetter() {
-    const letterInput = document.getElementById('letter-input');
-    const letter = letterInput.value.toLowerCase(); // Get the letter in lowercase
 
-    if (letter && letter.match(/[a-z]/i)) { // Check if a valid letter was entered
-        if (selectedWord.includes(letter)) {
-            if (!correctLetters.includes(letter)) {
-                correctLetters.push(letter);
-                updateDisplayWord();
-            } else {
-                showNotification();
-            }
-        } else {
-            if (!wrongLetters.includes(letter)) {
-                wrongLetters.push(letter);
-                updateWrongLetterE1();
-            } else {
-                showNotification();
-            }
-        }
-        letterInput.value = ''; // Clear the input box
-    }
-}
-function cancelLetter() {
-    const letterInput = document.getElementById('letter-input');
-    letterInput.value = ''; // Clear the input box
-}
 function updateWrongLetterE1() {
     wrongLettersE1.innerHTML = `
     ${wrongLetters.length > 0 ? 'Wrong:' : ''}
@@ -99,10 +74,12 @@ function showNotification() {
     }, 2000);
 }
 
-window.addEventListener('keydown', e => {
-    if (e.keyCode >= 65 && e.keyCode <= 90) {
-        const letter = e.key;
+guessButton.addEventListener('click', e => {
 
+    let letter = document.getElementById('letter-container').innerText;
+    console.log(selectedWord);
+    console.log(letter);
+    if (letter != '') {
         if (selectedWord.includes(letter)) {
             if (!correctLetters.includes(letter)) {
                 correctLetters.push(letter);
@@ -121,6 +98,8 @@ window.addEventListener('keydown', e => {
             }
         }
     }
+
+
 });
 
 playAgainBtn.addEventListener('click', () => {

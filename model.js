@@ -1,23 +1,25 @@
 let video = document.getElementById('cameraStream');
 
 // Load trained model
-const sess = new onnx.InferenceSession();
-const loadingModelPromise = sess.loadModel('signman_model.onnx');
+let sess = new onnx.InferenceSession();
+let loadingModelPromise = sess.loadModel('signman_coordinate_model.onnx');
 
-function setupWebcam() {
-  // Accessing the user camera and video.
-  navigator.mediaDevices
-    .getUserMedia({
-      video: true,
-    })
-    .then((stream) => {
-      // Changing the source of video to current stream.
-      video.srcObject = stream;
-      video.addEventListener("loadedmetadata", () => {
-        video.play();
+async function setupWebcam() {
+  return new Promise((resolve, reject) => {
+    const constraints = {
+      video: true
+    };
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then(stream => {
+        video.srcObject = stream;
+        video.addEventListener('loadeddata', () => {
+          resolve(video);
+        });
+      })
+      .catch(error => {
+        reject(error);
       });
-    })
-    .catch(alert);
+  });
 }
 
 async function loadModel() {
@@ -37,30 +39,30 @@ function argmax(array) {
 
 function indexToLetter(index) {
   indexDict = {
-    0: 'A',
-    1: 'B',
-    2: 'C',
-    3: 'D',
-    4: 'E',
-    5: 'F',
-    6: 'G',
-    7: 'H',
-    8: 'I',
-    9: 'K',
-    10: 'L',
-    11: 'M',
-    12: 'N',
-    13: 'O',
-    14: 'P',
-    15: 'Q',
-    16: 'R',
-    17: 'S',
-    18: 'T',
-    19: 'U',
-    20: 'V',
-    21: 'W',
-    22: 'X',
-    23: 'Y'
+    0: 'a',
+    1: 'b',
+    2: 'c',
+    3: 'd',
+    4: 'e',
+    5: 'f',
+    6: 'g',
+    7: 'h',
+    8: 'i',
+    9: 'k',
+    10: 'l',
+    11: 'm',
+    12: 'n',
+    13: 'o',
+    14: 'p',
+    15: 'q',
+    16: 'r',
+    17: 's',
+    18: 't',
+    19: 'u',
+    20: 'v',
+    21: 'w',
+    22: 'x',
+    23: 'y'
   }
   return indexDict[index];
 }
@@ -86,7 +88,7 @@ async function getHands() {
         keypointsArr.push(coord.y);
       });
 
-      const input = new onnx.Tensor(new Float32Array(keypointsArr), 'float32', [1, 3, 224, 224]);
+      const input = new onnx.Tensor(new Float32Array(keypointsArr), 'float32', [1, 42]);
 
       const outputMap = await sess.run([input]);
       const outputTensor = outputMap.values().next().value;
@@ -96,7 +98,10 @@ async function getHands() {
       const letter = indexToLetter(letterIndex);
       console.log(letter);
 
+      document.getElementById('letter-container').innerText = letter;
 
+    } else {
+      document.getElementById('letter-container').innerText = '';
     }
 
     requestAnimationFrame(predict);
@@ -108,5 +113,11 @@ async function getHands() {
 
 
 
-setupWebcam();
-getHands();
+function main() {
+  loadingModelPromise.then(async () => {
+    await setupWebcam();
+    getHands();
+  });
+}
+
+main()
