@@ -12,18 +12,21 @@
   <button type="button" class="game_b" onclick="window.location.href='index.html'">
     <img src="files/407E0653-9B8B-4FE6-98B9-944124A8A734_4_5005_c-removebg-preview copy.png" width="110" height="60" />
   </button>
-  <img class="log" src="files/Untitled_design-removebg-preview.png" width="400" height="300" />
+  <img class="log" src="files/39EC7AA2-4DB9-4CD8-BB58-30C112245086_1_201_a-removebg-preview.png" width="400"
+    height="300" />
   <img class="sign" src="files/4E7BCA42-5CC7-4A7B-92BB-1133AF14E4AB_1_201_a-removebg-preview.png" width="700"
     height="400" />
-  <button type="button" class="add_b" onclick="">
-    <img src="files/Untitled_design__1_-removebg-preview.png" width="400" height="300" />
+
+  <!--<input type="text" id="letter-input" maxlength="1" placeholder="Enter letter">-->
+  <button type="button" class="add_b" onclick="addLetter()">
+    <img src="files/D7D7836F-3A42-4C6F-B89E-367D74974E4B_4_5005_c-removebg-preview.png" width="500" height="300" />
   </button>
-  <button type="button" class="delete_b" onclick="">
-    <img src="files/Untitled_design__3_-removebg-preview.png" width="300" height="300" />
+  <button type="button" class="delete_b" onclick="cancelLetter()">
+    <img src="files/674B6AFE-3324-4F33-917D-CC6CD0586BBE_4_5005_c-removebg-preview.png" width="300" height="300" />
   </button>
 
   <div class="game-container">
-    <svg height="500" width="640" class="figure-container">
+    <svg height="500" width="640" class="figure-container" style="myBorder">
       <line x1="60" y1="8" x2="270" y2="8"></line>
       <line x1="270" y1="10" x2="270" y2="99"></line>
       <line x1="60" y1="8" x2="60" y2="420"></line>
@@ -62,16 +65,27 @@
     <p>You have already entered this letter</p>
   </div>
 
-  <script src="script.js"></script>
+  <video id="cameraStream" autoplay></video>
+
   <!-- index.html -->
-  <video autoplay></video>
-  <script>
-    var constraints = {video: true};
-    var video = document.querySelector('video');
-    navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
-      video.srcObject = stream;
-    });
-  </script>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+<!-- Require the peer dependencies of hand-pose-detection. -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+
+<!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
+
+<script src="script.js"></script>
+<script src="model.js"></script>
+
 
 </html>

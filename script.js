@@ -1,3 +1,9 @@
+/*var constraints = { video: true };
+var video = document.querySelector('video');
+navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+    video.srcObject = stream;
+});*/
+
 const wordE1 = document.getElementById('word');
 const wrongLettersE1 = document.getElementById('wrong-letters');
 const playAgainBtn = document.getElementById('play-button');
@@ -7,7 +13,7 @@ const finalMessage = document.getElementById('final-message');
 
 const figureParts = document.querySelectorAll(".figure-part");
 
-const words = ['cinderella', 'moana', 'mulan', 'ariel', 'tiana', 'rapunzel', 'belle', 'merida', 'jasmine', 'pocahontas', 'sleepingbeauty', 'snowwhite'];
+const words = ['cinderella', 'moana', 'mulan', 'ariel', 'tiana', 'belle', 'merida', 'elsa', 'aurora', 'scoobydoo', 'shrek', 'dory', 'nemo', 'mickey', 'simba', 'nala', 'goofy'];
 
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 
@@ -34,6 +40,33 @@ function displayWord() {
         finalMessage.innerText = 'You won';
         popup.style.display = 'flex';
     }
+}
+function addLetter() {
+    const letterInput = document.getElementById('letter-input');
+    const letter = letterInput.value.toLowerCase(); // Get the letter in lowercase
+
+    if (letter && letter.match(/[a-z]/i)) { // Check if a valid letter was entered
+        if (selectedWord.includes(letter)) {
+            if (!correctLetters.includes(letter)) {
+                correctLetters.push(letter);
+                updateDisplayWord();
+            } else {
+                showNotification();
+            }
+        } else {
+            if (!wrongLetters.includes(letter)) {
+                wrongLetters.push(letter);
+                updateWrongLetterE1();
+            } else {
+                showNotification();
+            }
+        }
+        letterInput.value = ''; // Clear the input box
+    }
+}
+function cancelLetter() {
+    const letterInput = document.getElementById('letter-input');
+    letterInput.value = ''; // Clear the input box
 }
 function updateWrongLetterE1() {
     wrongLettersE1.innerHTML = `
@@ -103,3 +136,4 @@ playAgainBtn.addEventListener('click', () => {
 });
 
 displayWord();
+

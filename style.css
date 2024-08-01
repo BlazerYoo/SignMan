@@ -32,7 +32,7 @@ h1 {
   color: mintcream;
   font-size: 90pt;
   margin-top: 14%;
-  z-index: 1;
+  z-index: 0;
   transform: translate(45%, -55%);
 }
 
@@ -50,8 +50,8 @@ button {
   position: absolute;
   object-position: center;
   margin-top: 37%;
-  margin-left: 800px;
-  z-index: 1;
+  margin-left: 780px;
+  z-index: 0;
   background-color: transparent;
   border: transparent;
 }
@@ -59,21 +59,38 @@ button {
 .game_b {
   margin-left: 10px;
   margin-top: 10px;
+  z-index: 0;
 }
 
 .add_b {
-  margin-left: 1100px;
+  margin-left: 950px;
   margin-top: 600px;
+  z-index: 0;
 }
 
 .delete_b {
-  margin-left: 1400px;
+  margin-left: 1350px;
   margin-top: 600px;
+  z-index: 0;
 }
 
-vine1 {
-  transform: rotate(180deg);
+/*.vine1 {
+  transform: rotate(230deg);
+  margin-left: 465px;
+  margin-top: 215px;
+  width: 50px;
+  height: 120px;
+  z-index: 2;
 }
+
+.vine2 {
+  transform: rotate(270deg);
+  margin-left: 420px;
+  margin-top: 255px;
+  height: 100px;
+  width: 50px;
+  z-index: 2;
+}*/
 
 video {
   -webkit-transform: scaleX(-1);
@@ -84,14 +101,15 @@ video {
   width: 700px;
   margin-top: 50px;
   margin-bottom: 20px;
-  margin-left: 1050px;
+  margin-left: 1000px;
+  z-index: -1;
 }
 
 .log {
   position: absolute;
   margin-top: 410px;
   margin-left: 1500px;
-  z-index: 1;
+  z-index: 0;
 }
 
 .sign {
@@ -110,7 +128,6 @@ video {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
 
 .figure-container {
@@ -119,6 +136,7 @@ video {
   stroke-width: 20px;
   stroke-linecap: square;
   transform: translate(50%, 30%);
+  z-index: -1;
 }
 
 .figure-part {
@@ -137,7 +155,8 @@ video {
   flex-direction: row;
   text-align: left;
   margin-bottom: 20px;
-  color: #b8b691;
+  /*color: #b8b691;*/
+  color: #e36378;
   font-size: 45px;
 }
 
@@ -147,7 +166,7 @@ video {
 
 .wrong-letters-container span {
   font-size: 45px;
-  color: #b8b691;
+  color: #e36378;
 }
 
 .word {
@@ -183,28 +202,40 @@ video {
   justify-content: center;
 }
 
-.popup {
+/*.popup {
   background-color: #2980b9;
   border-radius: 5px;
   box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
-}
+  align-items: center;
+  justify-content: center;
+}*/
 
 .popup button {
   cursor: pointer;
-  background-color: #fff;
-  color: #2980b9;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #b8b691;
   border: 0;
   margin-top: 20px;
   padding: 12px 20px;
-  font-size: 16px;
+  font-size: 45px;
   align-items: center;
   justify-content: center;
+  margin-left: -150px;
+  font-family: 'MyFont';
+}
+
+.play-button {
+  align-items: center;
+  justify-content: center;
+  margin-left: 100px;
 }
 
 .popup button:active {
-  transform: scale(0.98);
+  transform: scale(0.99);
+  align-items: center;
+  justify-content: center;
 }
 
 .popup button:focus {
@@ -212,12 +243,15 @@ video {
 }
 
 .notification-container {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(237, 231, 225, 0.3);
   border-radius: 10px 10px 0 0;
   padding: 15px 20px;
   position: absolute;
+  margin-left: 680px;
   bottom: -50px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  align-items: center;
+  justify-content: center;
 }
 
 .notification-container p {
@@ -226,4 +260,10 @@ video {
 
 .notification-container.show {
   transform: translateY(-50px);
+}
+
+#start-camera {
+  padding: 15px 32px;
+  font-size: 30px;
+  background-color: white;
 }
